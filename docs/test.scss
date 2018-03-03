@@ -1,0 +1,10 @@
+@import "../dist/webkit-sassui-flex-lfixed-rauto.scss";
+.test-webkit-sassui-flex-lfixed-rauto{
+  border:1px solid salmon;
+  margin-bottom: 20px;
+  >.left{
+    margin-right: 20px;
+  }
+}
+
+
