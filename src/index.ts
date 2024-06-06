@@ -38,10 +38,6 @@ class DataArray {
     return this.data.length === 0;
   }
 
-  get() {
-    return this.data;
-  }
-
   first() {
     return this.isEmpty ? undefined : this.data[0];
   }

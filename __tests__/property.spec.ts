@@ -18,4 +18,18 @@ describe('base properties', () => {
     const dataArray = new DataArray(array);
     expect(dataArray.values).toEqual([1, 2, 3]);
   });
+
+  // isEmpty
+
+  test('isEmpty property: not empty', () => {
+    const array = [1, 2, 3];
+    const dataArray = new DataArray(array);
+    expect(dataArray.isEmpty).toBe(false);
+  });
+
+  test('isEmpty property: empty', () => {
+    const array = [];
+    const dataArray = new DataArray(array);
+    expect(dataArray.isEmpty).toBe(true);
+  })
 });
