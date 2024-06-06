@@ -38,6 +38,13 @@ class DataArray {
     return this.data.length === 0;
   }
 
+  get(index?: number) {
+    if (index === undefined) return this.data;
+    if (index >= this.data.length) return undefined;
+    if (index < 0) return this.data[this.data.length + index];
+    return this.data[index];
+  }
+
   first() {
     return this.isEmpty ? undefined : this.data[0];
   }
