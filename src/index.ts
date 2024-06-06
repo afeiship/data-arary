@@ -55,6 +55,7 @@ class DataArray {
 
   chunk(chunkSize: number) {
     const chunks: any[] = [];
+    if (chunkSize <= 0) return chunks;
     for (let i = 0; i < this.data.length; i += chunkSize) {
       chunks.push(this.data.slice(i, i + chunkSize));
     }
