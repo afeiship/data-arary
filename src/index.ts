@@ -89,10 +89,12 @@ class DataArray {
 
   remove(index: number) {
     this.splice(index, 1);
+    this.options.onChange?.(this.data);
   }
 
   insert(index: number, element: any) {
     this.splice(index, 0, element);
+    this.options.onChange?.(this.data);
   }
 
   has(element: any) {
