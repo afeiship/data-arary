@@ -1,5 +1,6 @@
 export interface DataArrayOptions {
   onChange?: (data: any[]) => void;
+  continuous?: boolean;
 }
 
 const simpleDeepCopy = (obj: any) => JSON.parse(JSON.stringify(obj));
@@ -10,7 +11,7 @@ class DataArray {
 
   constructor(data: any[], options?: any) {
     this.data = data;
-    this.options = options;
+    this.options = options || {};
   }
 
   public setData(data: any[]) {
@@ -136,6 +137,41 @@ class DataArray {
   reverse() {
     this.data.reverse();
     this.options.onChange?.(this.data);
+  }
+
+  swap(indexA: number, indexB: number) {
+    if (this.length <= 1) return;
+    if (indexA === indexB) return;
+    const temp = this.data[indexA];
+    this.data[indexA] = this.data[indexB];
+    this.data[indexB] = temp;
+    this.options.onChange?.(this.data);
+  }
+
+  up(index: number) {
+    const { continuous } = this.options;
+    if (this.length <= 1) return;
+    if (!continuous && index === 0) return;
+    if (index === 0) {
+      const first = this.first();
+      this.data.shift();
+      this.data.push(first);
+      return;
+    }
+    this.swap(index, index - 1);
+  }
+
+  down(index: number) {
+    const { continuous } = this.options;
+    if (this.length <= 1) return;
+    if (!continuous && index === this.length - 1) return;
+    if (index === this.length - 1) {
+      const last = this.last();
+      this.data.pop();
+      this.data.unshift(last);
+      return;
+    }
+    this.swap(index, index + 1);
   }
 }
 
