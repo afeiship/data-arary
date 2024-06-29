@@ -154,7 +154,7 @@ class DataArray {
   }
 
   // to top
-  top(index: number) {
+  upEdge(index: number) {
     if (this.length <= 1) return;
     if (index === 0) return;
     if (index > this.length - 1) return;
@@ -164,7 +164,7 @@ class DataArray {
   }
 
   // to bottom
-  bottom(index: number) {
+  downEdge(index: number) {
     if (this.length <= 1) return;
     if (index === this.length - 1) return;
     if (index < 0) return;
