@@ -46,6 +46,14 @@ class DataArray {
     return this.data[index];
   }
 
+  take(count?: number) {
+    if (typeof count === 'undefined') return this.data;
+    if (count == 0) return [];
+    if (count >= this.data.length) return this.data;
+    if (count < 0) return this.data.slice(count);
+    return this.data.slice(0, count);
+  }
+
   first() {
     return this.isEmpty ? undefined : this.data[0];
   }
