@@ -1,6 +1,6 @@
 {
   "name": "@jswork/data-arary",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Data array with some new methods.",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
@@ -34,5 +34,12 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "keywords": [
+    "array",
+    "data",
+    "data-structure",
+    "js",
+    "list"
+  ]
 }
