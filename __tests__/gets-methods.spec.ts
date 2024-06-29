@@ -43,5 +43,6 @@ describe('gets methods', () => {
     expect(data.get(-3)).toBe(3);
     expect(data.get(-4)).toBe(2);
     expect(data.get(-5)).toBe(1);
+    expect(data.get(-100)).toBe(undefined);
   });
 });
