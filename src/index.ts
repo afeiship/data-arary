@@ -4,6 +4,10 @@ export interface DataArrayOptions {
 }
 
 const simpleDeepCopy = (obj: any) => JSON.parse(JSON.stringify(obj));
+const defaults = {
+  onChange: () => {},
+  continuous: false,
+};
 
 class DataArray {
   private data: any[];
@@ -11,7 +15,7 @@ class DataArray {
 
   constructor(data: any[], options?: any) {
     this.data = data;
-    this.options = options || {};
+    this.options = { ...defaults, ...options };
   }
 
   public setData(data: any[]) {
