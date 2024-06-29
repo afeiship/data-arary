@@ -9,6 +9,16 @@ describe('bases methods', () => {
     expect(data.values).toEqual([5, 2, 3, 4, 1]);
   });
 
+  test('swapEdge', () => {
+    const data1 = new DataArray([1, 2, 3, 4, 5]);
+    data1.swapEdge();
+    expect(data1.values).toEqual([5, 2, 3, 4, 1]);
+
+    const data2 = new DataArray([1, 2]);
+    data2.swapEdge();
+    expect(data2.values).toEqual([2, 1]);
+  });
+
   // up
   test('up', () => {
     const data = new DataArray([1, 2, 3, 4, 5]);

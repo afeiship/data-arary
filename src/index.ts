@@ -148,6 +148,31 @@ class DataArray {
     this.options.onChange?.(this.data);
   }
 
+  swapEdge() {
+    if (this.length <= 1) return;
+    this.swap(0, this.length - 1);
+  }
+
+  // to top
+  top(index: number) {
+    if (this.length <= 1) return;
+    if (index === 0) return;
+    if (index > this.length - 1) return;
+    const element = this.data.splice(index, 1)[0];
+    this.data.unshift(element);
+    this.options.onChange?.(this.data);
+  }
+
+  // to bottom
+  bottom(index: number) {
+    if (this.length <= 1) return;
+    if (index === this.length - 1) return;
+    if (index < 0) return;
+    const element = this.data.splice(index, 1)[0];
+    this.data.push(element);
+    this.options.onChange?.(this.data);
+  }
+
   up(index: number) {
     const { continuous } = this.options;
     if (this.length <= 1) return;
@@ -156,6 +181,7 @@ class DataArray {
       const first = this.first();
       this.data.shift();
       this.data.push(first);
+      this.options.onChange?.(this.data);
       return;
     }
     this.swap(index, index - 1);
@@ -169,6 +195,7 @@ class DataArray {
       const last = this.last();
       this.data.pop();
       this.data.unshift(last);
+      this.options.onChange?.(this.data);
       return;
     }
     this.swap(index, index + 1);
