@@ -81,7 +81,7 @@ class DataArray {
   }
 
   clear() {
-    this.data = [];
+    this.data.length = 0;
     this.options.onChange?.(this.data);
   }
 
