@@ -5,8 +5,6 @@ export interface DataArrayOptions {
 
 const simpleDeepCopy = (obj: any) => JSON.parse(JSON.stringify(obj));
 const defaults = {
-  onChange: () => {
-  },
   continuous: false,
 };
 
