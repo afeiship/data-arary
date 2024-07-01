@@ -5,7 +5,8 @@ export interface DataArrayOptions {
 
 const simpleDeepCopy = (obj: any) => JSON.parse(JSON.stringify(obj));
 const defaults = {
-  onChange: () => {},
+  onChange: () => {
+  },
   continuous: false,
 };
 
@@ -75,8 +76,17 @@ class DataArray {
     return chunks;
   }
 
-  merge(data: any[]) {
+  merge(data: any) {
     this.data = this.data.concat(data);
+    this.options.onChange?.(this.data);
+  }
+
+  union(data: any[]) {
+    data.forEach((element) => {
+      if (!this.data.includes(element)) {
+        this.data.push(element);
+      }
+    });
     this.options.onChange?.(this.data);
   }
 
