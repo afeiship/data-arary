@@ -42,6 +42,11 @@ class DataArray {
     return this.data.length === 0;
   }
 
+  set(index: number, value: any) {
+    this.data[index] = value;
+    this.options.onChange?.(this.data);
+  }
+
   get(index?: number) {
     if (index === undefined) return this.data;
     if (index >= this.data.length) return undefined;
@@ -63,10 +68,6 @@ class DataArray {
 
   last() {
     return this.isEmpty ? undefined : this.data[this.data.length - 1];
-  }
-
-  toArray() {
-    return this.data.slice();
   }
 
   chunk(chunkSize: number) {
