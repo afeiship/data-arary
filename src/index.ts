@@ -67,6 +67,10 @@ class DataArray {
     return this.isEmpty ? undefined : this.data[this.data.length - 1];
   }
 
+  toArray() {
+    return this.data.slice();
+  }
+
   chunk(chunkSize: number) {
     const chunks: any[] = [];
     if (chunkSize <= 0) return chunks;
@@ -86,6 +90,20 @@ class DataArray {
       if (!this.data.includes(element)) {
         this.data.push(element);
       }
+    });
+    this.options.onChange?.(this.data);
+  }
+
+  unique() {
+    this.data = Array.from(new Set(this.data));
+    this.options.onChange?.(this.data);
+  }
+
+  uniqueBy(key: string | ((item: any) => string)) {
+    const keyFn = typeof key === 'function' ? key : (item: any) => item[key];
+    this.data = this.data.filter((item, index) => {
+      const keyValue = keyFn(item);
+      return this.data.findIndex((item2) => keyFn(item2) === keyValue) === index;
     });
     this.options.onChange?.(this.data);
   }
